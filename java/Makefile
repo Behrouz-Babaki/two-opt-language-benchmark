@@ -16,4 +16,4 @@ $(TARGET).class: $(SOURCES)
 
 # Clean rule
 clean:
-	rm -f $(TARGET).class
+	rm -f *.class
