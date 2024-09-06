@@ -7,13 +7,13 @@ current_dir=$(pwd)
 script_dir=$(dirname "$0")
 cd "$script_dir"
 
-# Check if an input file is provided
-if [[ $# -ne 1 ]]; then
-    echo "Usage: ./run_tsp.sh <input_file>"
+# Check if the input file is provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <input_file>"
     exit 1
 fi
 
-# Run the Node.js script
-node tsp.js "$1"
+# Run the Go program
+go run tsp.go $1
 
 cd "$current_dir"

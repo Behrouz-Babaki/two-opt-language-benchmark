@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
@@ -60,18 +61,12 @@ func twoOpt(tour []int, distances [][]float64) float64 {
 
 			if change < -1e-10 {
 				// Apply the first improving move
-				reverse(tour[i+1 : j+1])
+				slices.Reverse(tour[i+1 : j+1])
 				return change
 			}
 		}
 	}
 	return 0 // No improvement found
-}
-
-func reverse(s []int) {
-	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
-		s[i], s[j] = s[j], s[i]
-	}
 }
 
 func optimizeTour(distances [][]float64) OptimizationResult {

@@ -19,7 +19,7 @@ end
 
 function two_opt!(tour::Vector{Int}, distances::Matrix{Float64})
     n = length(tour)
-    for i in 1:n-1
+    @inbounds for i in 1:n-1
         for j in i+2:n
             change = -distances[tour[i], tour[i+1]] - distances[tour[j], tour[mod1(j+1, n)]] +
                       distances[tour[i], tour[j]] + distances[tour[i+1], tour[mod1(j+1, n)]]
